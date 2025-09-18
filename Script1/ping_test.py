@@ -5,7 +5,7 @@ import time
 import subprocess
 
 def default_gateway():
-    command = "route -n get default | grep 'gateway' | awk '{print $2}'"
+    command = "ip route show default | awk '/default/ {print $3}'"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     gateway_ip = result.stdout.strip()
     return gateway_ip

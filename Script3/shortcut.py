@@ -95,13 +95,27 @@ while True: # Main loop
                     symlinks.append((full_path, target)) # Add to list
         if not symlinks: # No symbolic links found
             print("No symbolic links found in your home directory.") # Print message
+            report_lines = ["No symbolic links found in your home directory."] # Build report content for file
         else:
             print("\nFound symbolic links:") #  Section header
             print("-" * 60) # Separator line
+            report_lines = ["Found symbolic links:\n" + "-" * 60] # Start report content
             for link, target in symlinks: # Print each symbolic link and its target
-                print(f"Link: {link}\n→ Target: {target}\n") # Print link and target
+                block = f"Link: {link}\n→ Target: {target}\n" # Prepare line block
+                print(block, end="") # Print link and target
+                report_lines.append(block.rstrip("\n")) # Append to report content
             print("-" * 60) # Separator line
             print(f"Total symbolic links in home directory: {len(symlinks)}") # Print total count
+            report_lines.append("-" * 60) # Add separator to report content
+            report_lines.append(f"Total symbolic links in home directory: {len(symlinks)}") # Add total count
+
+        out_path = home / "symlink_report.txt" # Save report in HOME directory (not Desktop)
+        try:
+            with open(out_path, "w", encoding="utf-8") as f: # Open report file for writing
+                f.write("\n".join(report_lines) + "\n") # Write report content to file
+            print(f"\nReport saved to: {out_path}") # Inform user where it was saved
+        except OSError as e:
+            print("Error writing report file:", e) # Print error if save fails
 
     else:
         print("Invalid selection. Please try again.") # Handle invalid input

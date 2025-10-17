@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
 #Emir T. Yilmaz
 #Sep 24th, 2025
+#Script 2
 
 import os
 import socket

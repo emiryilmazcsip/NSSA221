@@ -1,4 +1,8 @@
 #Prof. Crowes Code in class lmao AAAAAAA
+#!/usr/bin/env python3
+#Emir T. Yilmaz
+#Sep 10th, 2025
+#Script 1
 
 import os
 import time

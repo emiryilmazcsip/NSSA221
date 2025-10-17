@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #Emir T. Yilmaz
 #October 10th, 2025
 #Script 3
